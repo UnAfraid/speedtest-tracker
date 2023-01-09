@@ -40,7 +40,7 @@ jobs:
 
       - id: docker-image-to-lowercase
         name: Convert Docker image to lower case
-        run: echo "DOCKER_IMAGE=$(echo ${{ secrets.DOCKER_USERNAME }}/${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+        run: echo "DOCKER_IMAGE=$(echo ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
