@@ -21,9 +21,6 @@ env:
 jobs:
   build_and_push_image:
     runs-on: ubuntu-22.04
-    permissions:
-      contents: read
-      packages: write
 
     steps:
       - name: Checkout repository
@@ -53,5 +50,5 @@ jobs:
           context: .
           push: true
           platforms: ${{ env.PLATFORMS }}
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.repository }}:latest
           labels: ${{ steps.meta.outputs.labels }}
